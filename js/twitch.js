@@ -6,11 +6,28 @@ console.log(len);
 for(var i=0;i<len;++i){
 
    //console.log(arr[i]);
-   var url="https://api.twitch.tv/kraken/streams/"+arr[i]+"?callback=?";
-   console.log(url);
-   $.getJSON(url,function(json){
+   function makeUrl(which,val){
 
-     handleMyJSON(json);
+     if(which=="streams")
+       return "https://api.twitch.tv/kraken/streams/"+val+"?callback=?";
+
+     else if(which=="users")
+       return "https://api.twitch.tv/kraken/users/"+val+"?callback=?";
+
+   }
+
+   $.getJSON(makeUrl("streams",arr[i]),function(json){
+
+     val=handleMyJSON(json);
+
+     $.getJSON(val,function(json){
+
+        console.log(json.logo);
+        console.log(json.display_name);
+        console.log(json.game+" "+json.status);
+
+     });
+
 
    });
 
@@ -19,19 +36,26 @@ for(var i=0;i<len;++i){
      if(json.stream===null){
 
          console.log("Offline");
+        // console.log(json._links.channel);
+         return json._links.channel;
 
      }
 
      else if(json.stream===undefined){
 
          console.log("Account Closed");
+
      }
 
      else{
 
          console.log("Online");
+      //   console.log(json._links.channel);
+         return json._links.channel;
+
+
      }
 
    }
 
-}  
+}
