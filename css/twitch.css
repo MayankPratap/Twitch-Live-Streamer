@@ -1,0 +1,56 @@
+html{
+
+   height:100%;
+}
+body{
+
+    height:100%;
+    background-attachment: fixed;
+    background-color:#162234;
+
+}
+.header{
+
+   font-family: Lobster;
+   background-color: #0B75B6;
+   color:white;
+   width:715px;
+   height:100px;
+   padding-top:15px;
+   margin-left:275px;
+
+}
+
+.container{
+
+   width:735px;
+   margin-left:260px;
+   margin-top:15px;
+
+}
+
+
+
+.channel-online{
+
+   width:715px;
+   background-color:#00B12F;
+   margin-left: 5px;
+
+}
+
+.channel-offline{
+
+   width:715px;
+   background-color:#FFA042;
+   margin-left:5px;
+
+}
+
+.logo{
+
+  width:50px;
+  height:50px;
+  border-radius:10px;
+  border-width:4px;
+}
